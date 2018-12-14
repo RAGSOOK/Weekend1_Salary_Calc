@@ -13,7 +13,12 @@ let monthlyTotal = 0;
         let title = $('#titleIn').val();
         let annSal = $('#annSalIn').val();
 
-
+        //empty fields
+        $('#firstIn').val('');
+        $('#lastIn').val('');
+        $('#idIn').val('');
+        $('#titleIn').val('');
+        $('#annSalIn').val('');
 
         //add row to table
         $('#tableBody').append('<tr><td><button class="removeButton">X</button></td><td>' +first+ '</td><td>' +last+ '</td><td>'+ID+'</td><td>'+title+'</td><td>'+annSal+'</td></tr>');
@@ -21,22 +26,17 @@ let monthlyTotal = 0;
         updateMonthlyTotal(annSal);
 
         //Update Total Monthly on DOM
-        $('#totalMonthly').html(monthlyTotal);
+        $('#totalMonthlyExpenditure').html(monthlyTotal);
         if( monthlyTotal > 20000){
-            $('#totalMonthly').css('background-color', 'red');
+            $('#totalMonthlyExpenditure').css('background-color', 'red');
         }
         // console.log(first, last, ID, title, annSal);
 
-                //empty fields
-        $('#firstIn').empty();
-        $('#lastIn').empty();
-        $('#idtIn').empty();
-        $('#titleIn').empty();
-        $('#annSalIn').empty();
     });// end submit
     
     //remove a row
     $('#employeeTable').on('click', '.removeButton', killRow);
+
  });
 
 
