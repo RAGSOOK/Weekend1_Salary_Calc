@@ -27,6 +27,9 @@ let monthlyTotal = 0;
 
         //Update Total Monthly on DOM
         $('#totalMonthly').html(monthlyTotal);
+        if( monthlyTotal > 20000){
+            $('#totalMonthly').css('background-color', 'red');
+        }
         // console.log(first, last, ID, title, annSal);
     })
  });//end submit
