@@ -1,4 +1,4 @@
- 
+let monthlyTotal = 0; 
  
 //Jquery
  $(document).ready(function(){
@@ -23,15 +23,16 @@
         //add row to table
         $('#tableBody').append('<tr><td>' +first+ '</td><td>' +last+ '</td><td>'+ID+'</td><td>'+title+'</td><td>'+annSal+'</td></tr>');
 
+        updateMonthlyTotal(annSal);
+
+        //Update Total Monthly on DOM
+        $('#totalMonthly').html(monthlyTotal);
         // console.log(first, last, ID, title, annSal);
     })
  });//end submit
- 
- 
- 
- // Display each of the pets on the DOM.
-//   for (let i = 0; i < pets.length; i++) {
-//     const element = pets[i];
-//     $('#tableBody').append('<tr> <td>' + element.name + '</td> <td>' + element.type + '</td> <td>' + element.age +'</td>  </tr>');
-  
-//   }
+
+
+ let updateMonthlyTotal = function(indvAnnSal){
+     indvMonthSal = Number(indvAnnSal) / 12;
+     monthlyTotal += indvMonthSal;
+ }
