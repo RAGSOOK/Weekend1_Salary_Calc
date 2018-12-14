@@ -13,15 +13,10 @@ let monthlyTotal = 0;
         let title = $('#titleIn').val();
         let annSal = $('#annSalIn').val();
 
-        //empty fields
-        $('#firstIn').empty();
-        $('#lastIn').empty();
-        $('#idtIn').empty();
-        $('#titleIn').empty();
-        $('#annSalIn').empty();
+
 
         //add row to table
-        $('#tableBody').append('<tr><td>' +first+ '</td><td>' +last+ '</td><td>'+ID+'</td><td>'+title+'</td><td>'+annSal+'</td></tr>');
+        $('#tableBody').append('<tr><td><button class="removeButton">X</button></td><td>' +first+ '</td><td>' +last+ '</td><td>'+ID+'</td><td>'+title+'</td><td>'+annSal+'</td></tr>');
 
         updateMonthlyTotal(annSal);
 
@@ -31,11 +26,26 @@ let monthlyTotal = 0;
             $('#totalMonthly').css('background-color', 'red');
         }
         // console.log(first, last, ID, title, annSal);
-    })
- });//end submit
+
+                //empty fields
+        $('#firstIn').empty();
+        $('#lastIn').empty();
+        $('#idtIn').empty();
+        $('#titleIn').empty();
+        $('#annSalIn').empty();
+    });// end submit
+    
+    //remove a row
+    $('#employeeTable').on('click', '.removeButton', killRow);
+ });
 
 
  let updateMonthlyTotal = function(indvAnnSal){
      indvMonthSal = Number(indvAnnSal) / 12;
      monthlyTotal += indvMonthSal;
+ }
+
+ let killRow = function(){
+     $(this).parent().parent().remove();
+     console.log('kill row');
  }
