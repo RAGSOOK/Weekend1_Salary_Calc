@@ -1,4 +1,15 @@
+class Employee{
+    constructor(firstIn, lastIn, idIN, titleIn, annSalIn ){
+        this.firstName = firstIn;
+        this.lastName = lastIn;
+        this.ID = idIn;
+        this.title = titleIn;
+        this.annSal = annSalIn;
+    }
+} //end Employee class
+
 let monthlyTotal = 0; 
+let roster = [];
  
 //Jquery
  $(document).ready(function(){
@@ -12,6 +23,8 @@ let monthlyTotal = 0;
         let ID = $('#idIn').val();
         let title = $('#titleIn').val();
         let annSal = $('#annSalIn').val();
+
+        newEmployee(first, last, ID, title, annSal);
 
         //empty fields
         $('#firstIn').val('');
@@ -39,13 +52,21 @@ let monthlyTotal = 0;
 
  });
 
-
+// adds the monthly salary from an annual salary to total expenses
  let updateMonthlyTotal = function(indvAnnSal){
      indvMonthSal = Number(indvAnnSal) / 12;
      monthlyTotal += indvMonthSal;
  }
 
+ //Deletes this row of the table
  let killRow = function(){
      $(this).parent().parent().remove();
      console.log('kill row');
  }
+
+ // Adds new employee to roster
+ function newEmployee( first, last, ID, title, annSal ){
+    console.log( 'in newEmployee:',first, last, ID, title, annSal );
+    roster.push( new Employee( first, last, ID, title, annSal ) );
+    return true;
+  } // end newEmployee
